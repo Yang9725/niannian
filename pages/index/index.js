@@ -56,6 +56,7 @@ Page({
           displayTime: displayTime, // 保存原始时间用于排序
           desc: '',
           photos: [],
+          photoIds: [], // 存储照片ID，用于详情页
           tags: new Set()
         }
       } else {
@@ -67,8 +68,9 @@ Page({
         }
       }
       
-      // 添加照片URL
+      // 添加照片URL和ID
       photosByDate[date].photos.push(photo.url)
+      photosByDate[date].photoIds.push(photo._id)
       
       // 合并描述（如果有）
       if (photo.desc && photo.desc.trim()) {
@@ -98,6 +100,7 @@ Page({
         displayTime: group.displayTime,
         desc: group.desc,
         photos: group.photos,
+        photoIds: group.photoIds,
         tags: Array.from(group.tags)
       }
     })
@@ -149,15 +152,34 @@ Page({
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
   },
 
-  // 预览照片
+  // 处理照片点击事件
   previewPhotos (e) {
     const { momentIndex, photoIndex } = e.currentTarget.dataset
     const moment = this.data.photos[momentIndex]
     
-    wx.previewImage({
-      current: moment.photos[photoIndex],
-      urls: moment.photos
-    })
+    // 判断是单击还是双击（防止误触）
+    if (this.lastTapTime && (new Date().getTime() - this.lastTapTime < 300)) {
+      // 双击：直接预览照片
+      wx.previewImage({
+        current: moment.photos[photoIndex],
+        urls: moment.photos
+      })
+    } else {
+      // 单击：跳转到详情页
+      if (moment.photoIds && moment.photoIds[photoIndex]) {
+        // 如果有照片ID，跳转到单张照片详情
+        wx.navigateTo({
+          url: `/pages/photo-detail/photo-detail?id=${moment.photoIds[photoIndex]}`
+        })
+      } else {
+        // 否则按日期查看照片组
+        wx.navigateTo({
+          url: `/pages/photo-detail/photo-detail?date=${moment.date}`
+        })
+      }
+    }
+    
+    this.lastTapTime = new Date().getTime()
   },
 
   // 删除动态
@@ -207,7 +229,13 @@ Page({
     this.setData({ refreshing: false })
   },
 
+  // 跳转到上传页面
   goUpload () {
     wx.switchTab({ url: '/pages/upload/upload' })
+  },
+  
+  // 跳转到搜索页面
+  goSearch () {
+    wx.navigateTo({ url: '/pages/search/search' })
   }
 }) 

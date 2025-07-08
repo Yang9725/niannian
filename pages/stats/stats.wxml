@@ -1,0 +1,121 @@
+<!-- 统计页面 -->
+<view class="container">
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+  
+  <!-- 主内容区域 -->
+  <block wx:else>
+    <!-- 顶部数据卡片 -->
+    <view class="stats-cards">
+      <view class="stats-card">
+        <view class="card-value">{{stats.total || 0}}</view>
+        <view class="card-label">照片总数</view>
+      </view>
+      <view class="stats-card">
+        <view class="card-value">{{stats.tags || 0}}</view>
+        <view class="card-label">标签总数</view>
+      </view>
+      <view class="stats-card">
+        <view class="card-value">{{stats.days || 0}}</view>
+        <view class="card-label">记录天数</view>
+      </view>
+    </view>
+    
+    <!-- 时间段统计 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">时间统计</text>
+      </view>
+      <view class="time-stats">
+        <view class="time-item">
+          <text class="time-label">第一张照片</text>
+          <text class="time-value">{{stats.firstPhotoDate || '暂无'}}</text>
+        </view>
+        <view class="time-item">
+          <text class="time-label">最近一张照片</text>
+          <text class="time-value">{{stats.lastPhotoDate || '暂无'}}</text>
+        </view>
+        <view class="time-item">
+          <text class="time-label">记录时长</text>
+          <text class="time-value">{{stats.durationText || '暂无'}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 月度统计图表 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">月度照片统计</text>
+      </view>
+      <view class="chart-container">
+        <view class="chart-y-axis">
+          <text wx:for="{{yAxis}}" wx:key="index" class="y-label">{{item}}</text>
+        </view>
+        <scroll-view class="chart-scroll" scroll-x="true">
+          <view class="chart">
+            <view class="chart-bars">
+              <view 
+                class="chart-bar" 
+                wx:for="{{stats.monthly}}" 
+                wx:key="month"
+                style="height: {{item.percentage}}%;"
+              >
+                <text class="bar-value">{{item.count}}</text>
+              </view>
+            </view>
+            <view class="chart-x-axis">
+              <text 
+                wx:for="{{stats.monthly}}" 
+                wx:key="month" 
+                class="x-label"
+              >{{item.month}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    
+    <!-- 热门标签 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">热门标签</text>
+      </view>
+      <view class="tags-container">
+        <view 
+          class="tag-item" 
+          wx:for="{{stats.topTags}}" 
+          wx:key="name"
+          bindtap="searchByTag"
+          data-tag="{{item.name}}"
+        >
+          <text class="tag-name">{{item.name}}</text>
+          <text class="tag-count">{{item.count}}</text>
+        </view>
+        
+        <view wx:if="{{!stats.topTags.length}}" class="no-tags">
+          <text>暂无标签数据</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 备份与导出 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">备份与导出</text>
+      </view>
+      <view class="action-buttons">
+        <button class="action-btn backup-btn" bindtap="backupData">
+          <text class="btn-icon">💾</text>
+          <text class="btn-text">备份数据</text>
+        </button>
+        <button class="action-btn export-btn" bindtap="exportPhotos">
+          <text class="btn-icon">📤</text>
+          <text class="btn-text">导出照片</text>
+        </button>
+      </view>
+    </view>
+  </block>
+</view> 

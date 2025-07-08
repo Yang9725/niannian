@@ -6,7 +6,7 @@
 }
 
 .timeline-scroll {
-  height: calc(100vh - 100rpx);
+  height: calc(100vh - 20rpx);
   padding: 0 24rpx;
   box-sizing: border-box;
 }
@@ -98,15 +98,18 @@
 }
 
 .action-btn {
-  padding: 8rpx 16rpx;
+  padding: 12rpx 24rpx;
   border-radius: 20rpx;
   background: rgba(255, 123, 172, 0.1);
   border: 1rpx solid rgba(255, 123, 172, 0.2);
+  min-width: 80rpx;
+  text-align: center;
 }
 
 .action-text {
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: #FF7BAC;
+  font-weight: 500;
 }
 
 /* 动态描述 */
@@ -198,4 +201,79 @@
   font-size: 26rpx;
   color: #999;
   line-height: 1.5;
+}
+
+/* 悬浮添加按钮 */
+.floating-add-btn {
+  position: fixed;
+  bottom: 140rpx; /* 避免与TabBar重叠 */
+  right: 40rpx;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+  border-radius: 50rpx;
+  padding: 20rpx 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 123, 172, 0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.floating-add-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(255, 123, 172, 0.4);
+}
+
+.add-btn-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 300;
+  color: #fff;
+  margin-right: 12rpx;
+}
+
+.add-btn-text {
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1rpx;
+}
+
+/* 悬浮搜索按钮 */
+.floating-search-btn {
+  position: fixed;
+  bottom: 140rpx; /* 避免与TabBar重叠 */
+  left: 40rpx;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #8BD3E6, #FF7BAC);
+  border-radius: 50rpx;
+  padding: 20rpx 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(139, 211, 230, 0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.floating-search-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(139, 211, 230, 0.4);
+}
+
+.search-btn-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 300;
+  color: #fff;
+  margin-right: 12rpx;
 } 

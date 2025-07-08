@@ -1,0 +1,337 @@
+/* 照片详情页样式 */
+.container {
+  min-height: 100vh;
+  background-color: #F6F6FA;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 120rpx; /* 为底部操作栏留出空间 */
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid rgba(255, 123, 172, 0.2);
+  border-top-color: #FF7BAC;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 照片展示区 */
+.photo-swiper {
+  width: 100%;
+  height: 750rpx;
+  background-color: #000;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+}
+
+/* 照片指示器 */
+.indicator {
+  position: absolute;
+  top: 700rpx;
+  right: 30rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+/* 照片信息卡片 */
+.info-card {
+  margin: 20rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 日期和时间 */
+.date-time {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.date {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.time {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 描述部分 */
+.description-section, .tags-section {
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.description-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.edit-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 123, 172, 0.1);
+  margin-left: 20rpx;
+}
+
+.edit-icon {
+  font-size: 32rpx;
+  color: #FF7BAC;
+}
+
+/* 描述编辑 */
+.description-edit {
+  margin-top: 20rpx;
+}
+
+.description-input {
+  width: 100%;
+  height: 200rpx;
+  background-color: #f9f9f9;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20rpx;
+}
+
+.cancel-btn, .save-btn {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  padding: 0 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+}
+
+.cancel-btn {
+  color: #666;
+  background-color: #f0f0f0;
+}
+
+.save-btn {
+  color: #fff;
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+}
+
+/* 标签部分 */
+.tags-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.tag {
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+  color: #fff;
+  padding: 6rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.no-tags {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 标签编辑 */
+.tags-edit {
+  margin-top: 20rpx;
+}
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+}
+
+.selected-tag {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+  color: #fff;
+  padding: 6rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.remove-icon {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+
+.tag-input-container {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.tag-input {
+  flex: 1;
+  height: 80rpx;
+  background-color: #f9f9f9;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.add-tag-btn {
+  width: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+  border-radius: 12rpx;
+  margin-left: 20rpx;
+  padding: 0;
+}
+
+.add-tag-btn[disabled] {
+  background: #f0f0f0;
+  color: #ccc;
+}
+
+.preset-tags {
+  margin-bottom: 20rpx;
+}
+
+.preset-tag-title {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.preset-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.preset-tag {
+  background-color: #f0f0f0;
+  color: #666;
+  padding: 6rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+/* 底部操作栏 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.action-btn::after {
+  border: none;
+}
+
+.action-icon {
+  font-size: 40rpx;
+  margin-bottom: 6rpx;
+}
+
+.share-btn .action-icon {
+  color: #8BD3E6;
+}
+
+.save-btn .action-icon {
+  color: #FF7BAC;
+}
+
+.delete-btn .action-icon {
+  color: #FF5151;
+}
+
+.action-text {
+  font-size: 24rpx;
+} 

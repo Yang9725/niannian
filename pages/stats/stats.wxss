@@ -1,0 +1,281 @@
+/* 统计页面样式 */
+.container {
+  min-height: 100vh;
+  background-color: #F6F6FA;
+  padding: 20rpx;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid rgba(255, 123, 172, 0.2);
+  border-top-color: #FF7BAC;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 统计数据卡片 */
+.stats-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.stats-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  margin: 0 10rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.stats-card:first-child {
+  margin-left: 0;
+}
+
+.stats-card:last-child {
+  margin-right: 0;
+}
+
+.card-value {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #FF7BAC;
+  margin-bottom: 10rpx;
+}
+
+.card-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 区块样式 */
+.section {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  padding-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8rpx;
+  height: 32rpx;
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+  border-radius: 4rpx;
+}
+
+/* 时间统计 */
+.time-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.time-item:last-child {
+  border-bottom: none;
+}
+
+.time-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.time-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 图表样式 */
+.chart-container {
+  display: flex;
+  height: 400rpx;
+  margin-top: 30rpx;
+}
+
+.chart-y-axis {
+  width: 60rpx;
+  height: 360rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 10rpx;
+}
+
+.y-label {
+  font-size: 22rpx;
+  color: #999;
+  text-align: right;
+}
+
+.chart-scroll {
+  flex: 1;
+  height: 400rpx;
+}
+
+.chart {
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-bars {
+  height: 360rpx;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1rpx solid #eee;
+}
+
+.chart-bar {
+  width: 60rpx;
+  min-width: 60rpx;
+  margin: 0 10rpx;
+  background: linear-gradient(180deg, #FF7BAC, #8BD3E6);
+  border-radius: 6rpx 6rpx 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10rpx;
+}
+
+.bar-value {
+  font-size: 20rpx;
+  color: #fff;
+}
+
+.chart-x-axis {
+  height: 40rpx;
+  display: flex;
+}
+
+.x-label {
+  width: 80rpx;
+  min-width: 80rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* 标签样式 */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10rpx;
+}
+
+.tag-item {
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+  padding: 12rpx 20rpx;
+  margin: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tag-name {
+  font-size: 26rpx;
+  color: #333;
+  margin-right: 10rpx;
+}
+
+.tag-count {
+  font-size: 22rpx;
+  color: #FF7BAC;
+  background-color: rgba(255, 123, 172, 0.1);
+  border-radius: 20rpx;
+  padding: 2rpx 10rpx;
+}
+
+.no-tags {
+  width: 100%;
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+
+.action-btn {
+  width: 45%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.backup-btn {
+  background: linear-gradient(135deg, #FF7BAC, #FF9B9B);
+}
+
+.export-btn {
+  background: linear-gradient(135deg, #8BD3E6, #A6E3E9);
+}
+
+.btn-icon {
+  font-size: 36rpx;
+  margin-right: 10rpx;
+}
+
+.btn-text {
+  font-weight: 500;
+} 

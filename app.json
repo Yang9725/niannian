@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/upload/upload"
+    "pages/upload/upload",
+    "pages/photo-detail/photo-detail",
+    "pages/search/search",
+    "pages/stats/stats"
   ],
   "window": {
     "navigationBarTitleText": "年年囿钱",
@@ -17,11 +20,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "相册"
+        "text": "相册",
+        "iconPath": "static/icons/photo.png",
+        "selectedIconPath": "static/icons/photo-active.png"
       },
       {
         "pagePath": "pages/upload/upload",
-        "text": "上传"
+        "text": "上传",
+        "iconPath": "static/icons/upload.png",
+        "selectedIconPath": "static/icons/upload-active.png"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "统计",
+        "iconPath": "static/icons/stats.png",
+        "selectedIconPath": "static/icons/stats-active.png"
       }
     ]
   },

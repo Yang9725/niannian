@@ -1,0 +1,149 @@
+<!-- 照片详情页 -->
+<view class="container">
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+  
+  <!-- 主内容区域 -->
+  <block wx:else>
+    <!-- 照片展示区 -->
+    <swiper class="photo-swiper" current="{{currentIndex}}" bindchange="onSwiperChange">
+      <swiper-item wx:for="{{photos}}" wx:key="index">
+        <image 
+          src="{{item}}" 
+          mode="aspectFit" 
+          class="photo" 
+          bindtap="previewCurrentPhoto"
+          data-index="{{index}}"
+        />
+      </swiper-item>
+    </swiper>
+    
+    <!-- 照片指示器 -->
+    <view class="indicator" wx:if="{{photos.length > 1}}">
+      <text>{{currentIndex + 1}}/{{photos.length}}</text>
+    </view>
+    
+    <!-- 照片信息卡片 -->
+    <view class="info-card">
+      <!-- 日期和时间 -->
+      <view class="date-time">
+        <text class="date">{{photoInfo.date}}</text>
+        <text class="time">{{photoInfo.formattedTime}}</text>
+      </view>
+      
+      <!-- 描述内容 -->
+      <view class="description-section">
+        <text class="section-title">描述</text>
+        <view class="description-content" wx:if="{{!isEditingDesc}}">
+          <text class="description-text">{{photoInfo.desc || '暂无描述'}}</text>
+          <view class="edit-btn" bindtap="startEditDesc">
+            <text class="edit-icon">✎</text>
+          </view>
+        </view>
+        <view class="description-edit" wx:else>
+          <textarea 
+            class="description-input" 
+            value="{{editDesc}}" 
+            bindinput="onDescInput" 
+            placeholder="添加描述..." 
+            maxlength="200"
+            auto-focus
+          ></textarea>
+          <view class="edit-actions">
+            <button class="cancel-btn" bindtap="cancelEditDesc">取消</button>
+            <button class="save-btn" bindtap="saveDesc">保存</button>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 标签列表 -->
+      <view class="tags-section">
+        <text class="section-title">标签</text>
+        <view class="tags-content" wx:if="{{!isEditingTags}}">
+          <view class="tags-list" wx:if="{{photoInfo.tags && photoInfo.tags.length > 0}}">
+            <text 
+              class="tag" 
+              wx:for="{{photoInfo.tags}}" 
+              wx:key="index"
+            >{{item}}</text>
+          </view>
+          <text class="no-tags" wx:else>暂无标签</text>
+          <view class="edit-btn" bindtap="startEditTags">
+            <text class="edit-icon">✎</text>
+          </view>
+        </view>
+        <view class="tags-edit" wx:else>
+          <!-- 已选标签 -->
+          <view class="selected-tags">
+            <view 
+              class="selected-tag" 
+              wx:for="{{editTags}}" 
+              wx:key="index"
+              bindtap="removeTag"
+              data-index="{{index}}"
+            >
+              <text>{{item}}</text>
+              <text class="remove-icon">×</text>
+            </view>
+          </view>
+          
+          <!-- 标签输入 -->
+          <view class="tag-input-container">
+            <input 
+              class="tag-input" 
+              value="{{newTag}}" 
+              bindinput="onTagInput" 
+              placeholder="添加标签..." 
+              maxlength="20"
+              bindconfirm="addTag"
+            />
+            <button class="add-tag-btn" bindtap="addTag" disabled="{{!newTag}}">添加</button>
+          </view>
+          
+          <!-- 预设标签 -->
+          <view class="preset-tags">
+            <text class="preset-tag-title">推荐标签：</text>
+            <view class="preset-tags-list">
+              <text 
+                class="preset-tag" 
+                wx:for="{{presetTags}}" 
+                wx:key="index"
+                bindtap="addPresetTag"
+                data-tag="{{item}}"
+              >{{item}}</text>
+            </view>
+          </view>
+          
+          <!-- 编辑操作 -->
+          <view class="edit-actions">
+            <button class="cancel-btn" bindtap="cancelEditTags">取消</button>
+            <button class="save-btn" bindtap="saveTags">保存</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 底部操作栏 -->
+    <view class="action-bar">
+      <button class="action-btn share-btn" bindtap="sharePhoto">
+        <text class="action-icon">↗</text>
+        <text class="action-text">分享</text>
+      </button>
+      <button class="action-btn save-btn" bindtap="saveToAlbum">
+        <text class="action-icon">↓</text>
+        <text class="action-text">保存</text>
+      </button>
+      <button class="action-btn delete-btn" bindtap="deletePhoto">
+        <text class="action-icon">×</text>
+        <text class="action-text">删除</text>
+      </button>
+    </view>
+  </block>
+  
+  <!-- 分享画布（隐藏） -->
+  <canvas canvas-id="shareCanvas" style="width: 750px; height: 1000px; position: fixed; top: -2000px;"></canvas>
+  <canvas canvas-id="compressCanvas" style="width: 300px; height: 300px; position: fixed; top: -2000px;"></canvas>
+</view> 

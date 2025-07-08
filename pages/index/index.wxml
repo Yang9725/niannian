@@ -61,4 +61,16 @@
       <text class="empty-subtitle">点击下方按钮开始记录宝宝的成长时光</text>
     </view>
   </scroll-view>
+  
+  <!-- 悬浮添加按钮 -->
+  <view class="floating-add-btn" bindtap="goUpload">
+    <view class="add-btn-icon">+</view>
+    <text class="add-btn-text">添加回忆</text>
+  </view>
+  
+  <!-- 悬浮搜索按钮 -->
+  <view class="floating-search-btn" bindtap="goSearch">
+    <view class="search-btn-icon">🔍</view>
+    <text class="search-btn-text">搜索</text>
+  </view>
 </view> 
