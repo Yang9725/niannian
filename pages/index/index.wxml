@@ -1,0 +1,64 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <scroll-view class="timeline-scroll" scroll-y="true" refresher-enabled="true" bindrefresherrefresh="onPullRefresh" refresher-triggered="{{refreshing}}">
+    <!-- 时间线动态列表 -->
+    <view class="timeline">
+      <block wx:for="{{photos}}" wx:key="_id">
+        <view class="timeline-item">
+          <!-- 时间线左侧圆点 -->
+          <view class="timeline-dot"></view>
+          <!-- 时间线连接线 -->
+          <view class="timeline-line" wx:if="{{index < photos.length - 1}}"></view>
+          
+          <!-- 动态卡片 -->
+          <view class="moment-card">
+            <!-- 头部信息 -->
+            <view class="moment-header">
+              <view class="moment-info">
+                <text class="moment-date">{{item.fullDateTime}}</text>
+              </view>
+              <view class="moment-actions">
+                <view class="action-btn" bindtap="deleteMoment" data-id="{{item._id}}">
+                  <text class="action-text">删除</text>
+                </view>
+              </view>
+            </view>
+            
+            <!-- 描述内容 -->
+            <view wx:if="{{item.desc}}" class="moment-desc">
+              <text>{{item.desc}}</text>
+            </view>
+            
+            <!-- 照片网格 -->
+            <view class="moment-photos {{item.photos.length === 2 ? 'two-photos' : ''}}">
+              <block wx:for="{{item.photos}}" wx:for-item="photo" wx:for-index="photoIndex" wx:key="photoIndex">
+                <image 
+                  src="{{photo}}" 
+                  mode="aspectFill" 
+                  class="moment-photo {{item.photos.length === 1 ? 'single-photo' : ''}}"
+                  bindtap="previewPhotos" 
+                  data-moment-index="{{index}}"
+                  data-photo-index="{{photoIndex}}"
+                />
+              </block>
+            </view>
+            
+            <!-- 标签 -->
+            <view wx:if="{{item.tags && item.tags.length}}" class="moment-tags">
+              <block wx:for="{{item.tags}}" wx:for-item="tag" wx:key="tag">
+                <text class="moment-tag">{{tag}}</text>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    
+    <!-- 空状态 -->
+    <view wx:if="{{!photos.length}}" class="empty-state">
+      <view class="empty-icon">📸</view>
+      <text class="empty-text">还没有美好回忆</text>
+      <text class="empty-subtitle">点击下方按钮开始记录宝宝的成长时光</text>
+    </view>
+  </scroll-view>
+</view> 

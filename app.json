@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/upload/upload"
+  ],
+  "window": {
+    "navigationBarTitleText": "年年囿钱",
+    "navigationBarBackgroundColor": "#FF8FB2",
+    "backgroundColor": "#F6F6FA",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#FF7BAC",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "相册"
+      },
+      {
+        "pagePath": "pages/upload/upload",
+        "text": "上传"
+      }
+    ]
+  },
+  "style": "v2",
+  "usingComponents": {}
+} 

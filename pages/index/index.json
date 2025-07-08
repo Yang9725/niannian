@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "baby-photo-card": "/components/baby-photo-card/baby-photo-card"
+  }
+} 

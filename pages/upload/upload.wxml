@@ -1,0 +1,56 @@
+<!-- pages/upload/upload.wxml -->
+<view class="upload-page">
+  <scroll-view class="form-scroll" scroll-y="true">
+    <view class="header">
+      <text class="title">添加美好回忆</text>
+    </view>
+    <view class="form-container">
+      <!-- 照片描述 -->
+      <view class="form-item">
+        <text class="label">照片描述</text>
+        <textarea value="{{form.desc}}" placeholder="记录这个美好时刻..." class="input" maxlength="100" bindinput="onDescInput" />
+      </view>
+      <!-- 照片选择 -->
+      <view class="form-item">
+        <text class="label">选择照片</text>
+        <view class="uploader">
+          <view class="preview-list">
+            <block wx:for="{{files}}" wx:key="index">
+              <view class="preview-item">
+                <image src="{{item.url}}" class="preview-image" bindtap="previewFile" data-index="{{index}}" />
+                <view class="remove-btn" bindtap="removeFile" data-index="{{index}}">×</view>
+              </view>
+            </block>
+          </view>
+          <view class="upload-btn" bindtap="chooseImage">
+            <text>上传图片</text>
+          </view>
+        </view>
+      </view>
+      <!-- 拍摄日期 -->
+      <view class="form-item">
+        <text class="label">拍摄日期</text>
+        <picker mode="date" value="{{form.date}}" bindchange="onDateChange">
+          <view class="date-picker">
+            <text>{{ form.date || '选择日期' }}</text>
+          </view>
+        </picker>
+      </view>
+      <!-- 标签 -->
+      <view class="form-item">
+        <text class="label">添加标签</text>
+        <view class="tags">
+          <block wx:for="{{availableTags}}" wx:for-item="tag" wx:for-index="idx" wx:key="idx">
+            <view class="tag {{tag.selected ? 'active' : ''}}" bindtap="toggleTag" data-index="{{idx}}">
+              {{tag.name}}
+            </view>
+          </block>
+          <input class="tag-input" placeholder="自定义标签" value="{{customTag}}" bindinput="onCustomTagInput" confirm-type="done" bindconfirm="addCustomTag" />
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="fixed-bottom-btn {{loading ? 'loading' : ''}}" bindtap="submit">
+    <text>{{ loading ? '上传中...' : '保存回忆' }}</text>
+  </view>
+</view> 

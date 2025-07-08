@@ -1,0 +1,216 @@
+/* pages/upload/upload.wxss */
+
+.upload-page {
+  background: #F6F6FA;
+  min-height: 100vh;
+  position: relative;
+}
+.form-scroll {
+  height: calc(100vh - 120rpx);
+  padding: 32rpx 24rpx 40rpx 24rpx;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #FF7BAC;
+}
+.form-container {
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4px 12px rgba(255, 123, 172, 0.06);
+  padding: 24rpx;
+}
+.form-item {
+  margin-bottom: 28rpx;
+}
+.label {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+.input {
+  width: 100%;
+  height: 200rpx;
+  border: 1rpx solid #eee;
+  border-radius: 12rpx;
+  padding: 8rpx 16rpx;
+  font-size: 28rpx;
+  background: #fafafa;
+  box-sizing: border-box;
+}
+.uploader {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+.preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+.preview-item {
+  position: relative;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16rpx;
+}
+.remove-btn {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  background: #FF7BAC;
+  color: #fff;
+  border-radius: 50%;
+  width: 36rpx;
+  height: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  box-shadow: 0 2px 8px rgba(255,123,172,0.15);
+  z-index: 2;
+  cursor: pointer;
+}
+.add-btn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8BD3E6, #FF7BAC);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(140,211,230,0.15);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.add-btn:active {
+  box-shadow: 0 4px 16px rgba(255,123,172,0.18);
+}
+.add-icon {
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+}
+.date-picker {
+  width: 100%;
+  min-width: 180rpx;
+  max-width: 320rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #8BD3E6, #FF7BAC);
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 32rpx;
+  margin: 0 0 16rpx 0;
+  box-shadow: 0 2px 8px rgba(140,211,230,0.10);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.date-picker:active {
+  box-shadow: 0 4px 16px rgba(255,123,172,0.18);
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 8rpx;
+}
+.tag {
+  background: #f0f0f0;
+  color: #888;
+  border-radius: 20rpx;
+  padding: 4rpx 18rpx;
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+  margin-right: 12rpx;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  display: inline-block;
+}
+.tag.active {
+  background: #FF7BAC !important;
+  color: #fff !important;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(255,123,172,0.10);
+}
+.fixed-bottom-btn {
+  position: fixed;
+  left: 50%;
+  bottom: 32rpx;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 600rpx;
+  background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 50rpx;
+  padding: 20rpx 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(255, 123, 172, 0.1);
+  z-index: 999;
+}
+.fixed-bottom-btn.loading {
+  opacity: 0.7;
+}
+.tag-input {
+  background: #f0f0f0;
+  color: #888;
+  border-radius: 20rpx;
+  padding: 4rpx 18rpx;
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+  margin-right: 12rpx;
+  border: none;
+  outline: none;
+  min-width: 160rpx;
+  max-width: 200rpx;
+  width: auto;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+}
+.tag-input:focus {
+  background: #fffbe8;
+  color: #333;
+}
+.upload-btn {
+  width: 100%;
+  min-width: 180rpx;
+  max-width: 320rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #8BD3E6, #FF7BAC);
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 32rpx;
+  margin: 0 0 16rpx 0;
+  box-shadow: 0 2px 8px rgba(140,211,230,0.10);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.upload-btn:active {
+  box-shadow: 0 4px 16px rgba(255,123,172,0.18);
+} 

@@ -1,0 +1,10 @@
+<!-- components/baby-photo-card/baby-photo-card.wxml -->
+<view class="photo-card" bindtap="onClick">
+  <image src="{{photo.url}}" mode="aspectFill" class="photo" />
+  <view wx:if="{{photo.date}}" class="date-badge">
+    {{photo.date}}
+  </view>
+  <view wx:if="{{photo.tags && photo.tags.length}}" class="tags">
+    <text wx:for="{{photo.tags.slice(0, 2)}}" wx:key="tag" class="tag">{{tag}}</text>
+  </view>
+</view> 
