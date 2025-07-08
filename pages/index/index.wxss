@@ -9,6 +9,7 @@
   height: calc(100vh - 20rpx);
   padding: 0 24rpx;
   box-sizing: border-box;
+  padding-bottom: 140rpx; /* 为底部按钮留出空间 */
 }
 
 /* 时间线容器 */
@@ -212,8 +213,8 @@
   align-items: center;
   background: linear-gradient(135deg, #FF7BAC, #8BD3E6);
   border-radius: 50rpx;
-  padding: 20rpx 32rpx;
-  box-shadow: 0 8rpx 24rpx rgba(255, 123, 172, 0.3);
+  padding: 16rpx 28rpx;
+  box-shadow: 0 8rpx 20rpx rgba(255, 123, 172, 0.3);
   z-index: 999;
   transition: all 0.3s ease;
 }
@@ -231,7 +232,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 300;
   color: #fff;
   margin-right: 12rpx;
@@ -253,8 +254,8 @@
   align-items: center;
   background: linear-gradient(135deg, #8BD3E6, #FF7BAC);
   border-radius: 50rpx;
-  padding: 20rpx 32rpx;
-  box-shadow: 0 8rpx 24rpx rgba(139, 211, 230, 0.3);
+  padding: 16rpx 28rpx;
+  box-shadow: 0 8rpx 20rpx rgba(139, 211, 230, 0.3);
   z-index: 999;
   transition: all 0.3s ease;
 }
@@ -272,7 +273,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 300;
   color: #fff;
   margin-right: 12rpx;

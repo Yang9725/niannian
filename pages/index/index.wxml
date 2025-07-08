@@ -62,15 +62,15 @@
     </view>
   </scroll-view>
   
-  <!-- 悬浮添加按钮 -->
-  <view class="floating-add-btn" bindtap="goUpload">
-    <view class="add-btn-icon">+</view>
-    <text class="add-btn-text">添加回忆</text>
-  </view>
-  
-  <!-- 悬浮搜索按钮 -->
+  <!-- 左侧搜索按钮 -->
   <view class="floating-search-btn" bindtap="goSearch">
     <view class="search-btn-icon">🔍</view>
     <text class="search-btn-text">搜索</text>
+  </view>
+  
+  <!-- 右侧添加按钮 -->
+  <view class="floating-add-btn" bindtap="goUpload">
+    <view class="add-btn-icon">+</view>
+    <text class="add-btn-text">添加回忆</text>
   </view>
 </view> 
